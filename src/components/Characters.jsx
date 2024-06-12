@@ -8,7 +8,13 @@ function ListOfCharacters({characters}){
                     <article className="w-full max-w-sm h-full md:w-full sm:max-w-xl rounded-xl overflow-hidden bg-white grid grid-rows-[270px,1fr]    sm:grid-rows-1 sm:grid-cols-[1.7fr,_3fr]" key={character.char_id}>
                         <picture className="w-full relative">
                             <img src={character.char_image} alt={character.char_name} className="w-full h-full object-cover bg-center aspect-square"/>
-                            <span className="text-white absolute px-2 py-1 top-2 left-2 rounded-md" style={{background: character.char_status.toLowerCase() === 'alive'? 'green': 'red'}}>
+                            <span className={`text-white absolute px-2 py-1 top-2 left-2 rounded-md ${
+                                character.char_status.toLowerCase() === 'alive'?
+                                'bg-green-500'
+                                : character.char_status.toLowerCase() === 'unknown' && character.char_status.toLowerCase() !== 'alive'?
+                                    'bg-gray-500'
+                                : 'bg-red-500'
+                                }`}>
                                 {character.char_status}
                             </span>
                         </picture>
